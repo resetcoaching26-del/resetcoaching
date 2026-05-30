@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE:SET Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a; --surface: #111111; --surface2: #181818;
+    --accent: #00e5a0; --accent2: #00b87a;
+    --text: #f0f0f0; --muted: #aaaaaa; --border: rgba(255,255,255,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; background: rgba(10,10,10,0.92); border-bottom: 0.5px solid var(--border); backdrop-filter: blur(10px); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; color: var(--text); }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--accent) !important; color: #000 !important; padding: 0.5rem 1.25rem; border-radius: 2px; }
+  .nav-cta:hover { background: var(--accent2) !important; }
+  section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 8rem; max-width: 100%; padding-left: 2.5rem; padding-right: 2.5rem; position: relative; overflow: hidden; }
+  .hero::before { content: 'RE:SET'; position: absolute; right: -2rem; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(10rem, 22vw, 20rem); color: rgba(255,255,255,0.025); pointer-events: none; user-select: none; white-space: nowrap; }
+  .hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 9vw, 8rem); line-height: 0.95; letter-spacing: 0.03em; max-width: 800px; margin-bottom: 2rem; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p { font-size: 1.1rem; color: #c0c0c0; max-width: 480px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.8; }
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #000; padding: 0.9rem 2rem; border: none; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--text); padding: 0.9rem 2rem; border: 0.5px solid rgba(255,255,255,0.25); border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s, color 0.2s; }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .divider { width: 100%; height: 0.5px; background: var(--border); margin: 0; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: block; width: 1.5rem; height: 1px; background: var(--accent); }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 0.04em; line-height: 1; margin-bottom: 1rem; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  .about-text p { color: #c0c0c0; font-weight: 300; margin-bottom: 1.25rem; line-height: 1.8; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 2px; padding: 1.5rem; position: relative; overflow: hidden; }
+  .stat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--accent); letter-spacing: 0.05em; line-height: 1; margin-bottom: 0.25rem; }
+  .stat-label { font-size: 12px; color: #b0b0b0; text-transform: uppercase; letter-spacing: 0.1em; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .service-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 2px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
+  .service-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-3px); }
+  .service-icon { width: 40px; height: 40px; background: rgba(0,229,160,0.1); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 18px; color: var(--accent); }
+  .service-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+  .service-card p { font-size: 14px; color: #c0c0c0; font-weight: 300; line-height: 1.7; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .price-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 2px; padding: 2rem; display: flex; flex-direction: column; }
+  .price-card.featured { border-color: var(--accent); background: var(--surface2); position: relative; }
+  .price-badge { position: absolute; top: -1px; right: 1.5rem; background: var(--accent); color: #000; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 0 0 2px 2px; }
+  .price-type { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #b0b0b0; margin-bottom: 0.75rem; }
+  .price-amount { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.03em; color: var(--text); line-height: 1; margin-bottom: 0.25rem; }
+  .price-amount span { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: #b0b0b0; font-weight: 300; }
+  .price-desc { font-size: 13px; color: #c0c0c0; font-weight: 300; margin: 1rem 0 1.5rem; flex: 1; line-height: 1.7; }
+  .price-features { list-style: none; margin-bottom: 1.75rem; }
+  .price-features li { font-size: 13px; color: #b8b8b8; padding: 0.4rem 0; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
+  .price-features li::before { content: '→'; color: var(--accent); font-size: 12px; }
+  .booking-section { background: var(--surface); border: 0.5px solid var(--border); border-radius: 2px; padding: 4rem; text-align: center; position: relative; overflow: hidden; max-width: 1100px; margin: 0 auto; }
+  .booking-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+  .booking-section h2 { margin-bottom: 1rem; }
+  .booking-section p { color: #c0c0c0; font-weight: 300; max-width: 500px; margin: 0 auto 2.5rem; font-size: 1rem; }
+  .calendly-note { font-size: 12px; color: #888; margin-top: 1.5rem; }
+  footer { border-top: 0.5px solid var(--border); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--muted); }
+  .footer-logo span { color: var(--accent); }
+  .footer-note { font-size: 12px; color: #888; }
+  .audience-bar { display: flex; gap: 2rem; margin-top: 3rem; padding: 2rem 0; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); overflow-x: auto; }
+  .audience-item { flex: 1; min-width: 140px; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
+  .audience-icon { width: 48px; height: 48px; background: rgba(0,229,160,0.08); border: 0.5px solid rgba(0,229,160,0.2); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--accent); margin-bottom: 0.5rem; }
+  .audience-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
+  .audience-sub { font-size: 11px; color: #b0b0b0; font-weight: 300; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero > * { animation: fadeUp 0.6s ease forwards; opacity: 0; }
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero > *:nth-child(4) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">RE<span>:</span>SET</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#coaching">Coaching</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#book" class="nav-cta">Book a call</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Performance Coaching · Leeds, UK</div>
+  <h1>Perform at your<br><em>highest level.</em></h1>
+  <p>Coaching for high performers in business and sport — helping you unlock clarity, build resilience, and operate at your peak.</p>
+  <div class="btn-group">
+    <a href="#book" class="btn-primary">Book a free discovery call</a>
+    <a href="#coaching" class="btn-outline">How it works</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section id="about">
+  <div class="section-label">Who this is for</div>
+  <h2>Built for people<br>who push limits</h2>
+  <div class="audience-bar">
+    <div class="audience-item">
+      <div class="audience-icon">◈</div>
+      <div class="audience-label">Leaders</div>
+      <div class="audience-sub">Executives & managers</div>
+    </div>
+    <div class="audience-item">
+      <div class="audience-icon">◉</div>
+      <div class="audience-label">Founders</div>
+      <div class="audience-sub">Entrepreneurs & builders</div>
+    </div>
+    <div class="audience-item">
+      <div class="audience-icon">▸</div>
+      <div class="audience-label">Athletes</div>
+      <div class="audience-sub">Amateur & competitive</div>
+    </div>
+    <div class="audience-item">
+      <div class="audience-icon">◆</div>
+      <div class="audience-label">Professionals</div>
+      <div class="audience-sub">Career transitions & growth</div>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>RE:SET Coaching works with driven individuals who know they have more to give — but something's getting in the way. Whether that's mindset, clarity, habits, or the way you show up under pressure.</p>
+      <p>My background spans leadership, people development, high performance, fitness and mindset. I coach the whole person — not just the role or the result.</p>
+      <p>Currently completing ICF Level 1 coach training (The Birth of a Coach), accredited by the International Coaching Federation.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-num">ICF</div><div class="stat-label">Level 1 accredited training</div></div>
+      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Whole-person approach</div></div>
+      <div class="stat-card"><div class="stat-num">1:1</div><div class="stat-label">Fully personalised sessions</div></div>
+      <div class="stat-card"><div class="stat-num">Online</div><div class="stat-label">Google Meet · flexible scheduling</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="coaching">
+  <div class="section-label">What we work on</div>
+  <h2>The coaching<br>experience</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">◈</div>
+      <h3>Mindset & performance</h3>
+      <p>Break through the mental barriers holding you back. Build the mental toughness to perform when it matters most.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">◉</div>
+      <h3>Leadership presence</h3>
+      <p>Develop the clarity, confidence and communication that makes great leaders — in business and in life.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">▸</div>
+      <h3>High performance habits</h3>
+      <p>Design the routines, boundaries and behaviours that sustain long-term performance without burning out.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">◆</div>
+      <h3>Clarity & direction</h3>
+      <p>When you're at a crossroads — career, purpose, or next chapter — coaching helps you find your clearest path forward.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="pricing">
+  <div class="section-label">Investment</div>
+  <h2>Choose your<br>starting point</h2>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-type">Discovery</div>
+      <div class="price-amount">FREE</div>
+      <div class="price-desc">A 30-minute conversation to explore whether coaching is right for you — no pressure, no commitment.</div>
+      <ul class="price-features">
+        <li>30-minute call</li>
+        <li>Via Google Meet</li>
+        <li>No obligation</li>
+      </ul>
+      <a href="#book" class="btn-primary" style="text-align:center;">Book now</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">Most popular</div>
+      <div class="price-type">Single session</div>
+      <div class="price-amount">£45<span> /session</span></div>
+      <div class="price-desc">A focused 60-minute coaching session. Come with a challenge, leave with clarity and a clear next step.</div>
+      <ul class="price-features">
+        <li>60-minute session</li>
+        <li>Via Google Meet</li>
+        <li>Session summary included</li>
+      </ul>
+      <a href="#book" class="btn-primary" style="text-align:center;">Book now</a>
+    </div>
+    <div class="price-card">
+      <div class="price-type">Starter package</div>
+      <div class="price-amount">£120<span> /3 sessions</span></div>
+      <div class="price-desc">Three sessions across 6 weeks. Build momentum and see real progress on a goal that matters to you.</div>
+      <ul class="price-features">
+        <li>3 × 60-minute sessions</li>
+        <li>Flexible scheduling</li>
+        <li>WhatsApp support between sessions</li>
+      </ul>
+      <a href="#book" class="btn-primary" style="text-align:center;">Book now</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="book" style="padding: 4rem 0;">
+  <div class="booking-section">
+    <div class="section-label" style="justify-content:center;">Ready to start</div>
+    <h2>Book your<br>discovery call</h2>
+    <p>Pick a time that works for you. All sessions are online via Google Meet — evenings and weekends available.</p>
+    <!-- Replace the href below with your Calendly link once set up -->
+    <a href="https://calendly.com/YOUR-LINK-HERE" target="_blank" class="btn-primary" style="font-size:15px; padding: 1rem 2.5rem;">View available times →</a>
+    <p class="calendly-note">Powered by Calendly · Google Meet link sent automatically on booking</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">RE<span>:</span>SET Coaching</div>
+  <div class="footer-note">ICF Level 1 coach training in progress · Leeds, UK</div>
+</footer>
+
+</body>
+</html>
