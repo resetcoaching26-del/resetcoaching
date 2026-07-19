@@ -68,6 +68,7 @@
   .booking-section h2 { margin-bottom: 1rem; }
   .booking-section p { color: #c0c0c0; font-weight: 300; max-width: 500px; margin: 0 auto 2.5rem; font-size: 1rem; }
   .calendly-note { font-size: 12px; color: #888; margin-top: 1.5rem; }
+  .calendly-inline-widget { border-radius: 2px; overflow: hidden; }
   footer { border-top: 0.5px solid var(--border); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
   .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--muted); }
   .footer-logo span { color: var(--accent); }
@@ -83,9 +84,21 @@
   .hero > *:nth-child(2) { animation-delay: 0.2s; }
   .hero > *:nth-child(3) { animation-delay: 0.35s; }
   .hero > *:nth-child(4) { animation-delay: 0.5s; }
+  @media (max-width: 700px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
+
+<!-- ============================================================
+     HOW TO EDIT COPY
+     Every editable block of text below has an EDIT comment
+     directly above it. To change wording, find the comment
+     for the section you want, then edit the text in the tag(s)
+     just below it. Don't touch anything inside the style or
+     script tags unless you mean to change design/behaviour.
+     ============================================================ -->
 
 <nav>
   <div class="nav-logo">RE<span>:</span>SET</div>
@@ -93,15 +106,20 @@
     <li><a href="#about">About</a></li>
     <li><a href="#coaching">Coaching</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li><a href="#book" class="nav-cta">Book a call</a></li>
   </ul>
 </nav>
 
 <div class="hero">
+  <!-- EDIT: Hero eyebrow tag (small line above headline) -->
   <div class="hero-tag">Performance Coaching · Leeds, UK</div>
+  <!-- EDIT: Hero headline (wrap the highlighted word/phrase in <em>) -->
   <h1>Perform at your<br><em>highest level.</em></h1>
-  <p>Coaching for high performers in business and sport — helping you unlock clarity, build resilience, and operate at your peak.</p>
+  <!-- EDIT: Hero subtext -->
+  <p>Coaching for high performers in business and sport, helping you unlock clarity, build resilience, and operate at your peak.</p>
   <div class="btn-group">
+    <!-- EDIT: Hero button labels -->
     <a href="#book" class="btn-primary">Book a free discovery call</a>
     <a href="#coaching" class="btn-outline">How it works</a>
   </div>
@@ -111,7 +129,9 @@
 
 <section id="about">
   <div class="section-label">Who this is for</div>
+  <!-- EDIT: About section headline -->
   <h2>Built for people<br>who push limits</h2>
+  <!-- EDIT: Audience tiles (who you work with) -->
   <div class="audience-bar">
     <div class="audience-item">
       <div class="audience-icon">◈</div>
@@ -135,15 +155,17 @@
     </div>
   </div>
   <div class="about-grid">
+    <!-- EDIT: About / bio paragraphs -->
     <div class="about-text">
-      <p>RE:SET Coaching works with driven individuals who know they have more to give — but something's getting in the way. Whether that's mindset, clarity, habits, or the way you show up under pressure.</p>
-      <p>My background spans leadership, people development, high performance, fitness and mindset. I coach the whole person — not just the role or the result.</p>
-      <p>Currently completing ICF Level 1 coach training (The Birth of a Coach), accredited by the International Coaching Federation.</p>
+      <p>RE:SET Coaching works with driven individuals who know they have more to give, but something's getting in the way. Whether that's mindset, clarity, habits, or the way you show up under pressure.</p>
+      <p>Alongside coaching, I work inside a fast-paced creative agency, leading teams and delivering to deadlines. Outside of work, I compete actively in bodybuilding, understanding first-hand what it takes to push a body and mind to their limit. In my coaching, I coach the whole person, not just the role or the result.</p>
+      <p>I'm currently training under an ICF-accredited pathway toward full accreditation.</p>
     </div>
+    <!-- EDIT: Stat cards (short proof points) -->
     <div class="about-stats">
-      <div class="stat-card"><div class="stat-num">ICF</div><div class="stat-label">Level 1 accredited training</div></div>
-      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Whole-person approach</div></div>
-      <div class="stat-card"><div class="stat-num">1:1</div><div class="stat-label">Fully personalised sessions</div></div>
+      <div class="stat-card"><div class="stat-num">Director</div><div class="stat-label">Creative agency leadership</div></div>
+      <div class="stat-card"><div class="stat-num">Competitive</div><div class="stat-label">Bodybuilding background</div></div>
+      <div class="stat-card"><div class="stat-num" style="font-size:1.7rem;">1:1 or Group</div><div class="stat-label">Fully personalised sessions</div></div>
       <div class="stat-card"><div class="stat-num">Online</div><div class="stat-label">Google Meet · flexible scheduling</div></div>
     </div>
   </div>
@@ -153,7 +175,9 @@
 
 <section id="coaching">
   <div class="section-label">What we work on</div>
+  <!-- EDIT: Coaching section headline -->
   <h2>The coaching<br>experience</h2>
+  <!-- EDIT: Service/focus area cards (title + description each) -->
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">◈</div>
@@ -163,7 +187,7 @@
     <div class="service-card">
       <div class="service-icon">◉</div>
       <h3>Leadership presence</h3>
-      <p>Develop the clarity, confidence and communication that makes great leaders — in business and in life.</p>
+      <p>Develop the clarity, confidence and communication that makes great leaders, in business and in life.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">▸</div>
@@ -173,7 +197,7 @@
     <div class="service-card">
       <div class="service-icon">◆</div>
       <h3>Clarity & direction</h3>
-      <p>When you're at a crossroads — career, purpose, or next chapter — coaching helps you find your clearest path forward.</p>
+      <p>When you're at a crossroads in career, purpose, or your next chapter, coaching helps you find your clearest path forward.</p>
     </div>
   </div>
 </section>
@@ -182,41 +206,58 @@
 
 <section id="pricing">
   <div class="section-label">Investment</div>
+  <!-- EDIT: Pricing section headline -->
   <h2>Choose your<br>starting point</h2>
+  <!-- EDIT: Pricing cards (type, price, description, feature list) -->
   <div class="pricing-grid">
     <div class="price-card">
       <div class="price-type">Discovery</div>
       <div class="price-amount">FREE</div>
-      <div class="price-desc">A 30-minute conversation to explore whether coaching is right for you — no pressure, no commitment.</div>
+      <div class="price-desc">A 30-minute introductory session to explore coaching in-practice.</div>
       <ul class="price-features">
         <li>30-minute call</li>
         <li>Via Google Meet</li>
-        <li>No obligation</li>
+        <li>Session Summary Included</li>
       </ul>
       <a href="#book" class="btn-primary" style="text-align:center;">Book now</a>
     </div>
     <div class="price-card featured">
       <div class="price-badge">Most popular</div>
       <div class="price-type">Single session</div>
-      <div class="price-amount">£45<span> /session</span></div>
-      <div class="price-desc">A focused 60-minute coaching session. Come with a challenge, leave with clarity and a clear next step.</div>
+      <div class="price-amount">£30<span> /session</span></div>
+      <div class="price-desc">For those that have had the free discovery session and are looking to explore possibilties in further 1:1 sessions.</div>
       <ul class="price-features">
         <li>60-minute session</li>
         <li>Via Google Meet</li>
         <li>Session summary included</li>
       </ul>
-      <a href="#book" class="btn-primary" style="text-align:center;">Book now</a>
+      <!-- EDIT: PayPal payment link - update the URL if your PayPal.me link ever changes -->
+      <a href="https://paypal.me/resetcoaching26/30GBP" target="_blank" class="btn-primary" style="text-align:center;">Pay & book £30</a>
+      <div style="font-size:11px;color:#888;margin-top:0.75rem;text-align:center;">Pay first, then <a href="#book" style="color:var(--accent);">pick your time here</a></div>
     </div>
     <div class="price-card">
       <div class="price-type">Starter package</div>
-      <div class="price-amount">£120<span> /3 sessions</span></div>
-      <div class="price-desc">Three sessions across 6 weeks. Build momentum and see real progress on a goal that matters to you.</div>
+      <div class="price-amount">£80<span> /3 sessions</span></div>
+      <div class="price-desc">Three sessions across 6 weeks to keep momentum in reaching your desired outcomes.</div>
       <ul class="price-features">
         <li>3 × 60-minute sessions</li>
         <li>Flexible scheduling</li>
         <li>WhatsApp support between sessions</li>
       </ul>
-      <a href="#book" class="btn-primary" style="text-align:center;">Book now</a>
+      <!-- EDIT: PayPal payment link - update the URL if your PayPal.me link ever changes -->
+      <a href="https://paypal.me/resetcoaching26/80GBP" target="_blank" class="btn-primary" style="text-align:center;">Pay & book £80</a>
+      <div style="font-size:11px;color:#888;margin-top:0.75rem;text-align:center;">Pay first, then <a href="#book" style="color:var(--accent);">pick your time here</a></div>
+    </div>
+    <div class="price-card">
+      <div class="price-type">Group training</div>
+      <div class="price-amount" style="font-size:1.8rem;">Price on request</div>
+      <div class="price-desc">Group training could cover a wider team mindset shift, relationship understanding and boundary setting for the next project, or with the aim to get the best out of your ELT.</div>
+      <ul class="price-features">
+        <li>Tailored to team size</li>
+        <li>In-person or online</li>
+        <li>Flexible scheduling</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="text-align:center;">Get in touch</a>
     </div>
   </div>
 </section>
@@ -226,17 +267,39 @@
 <section id="book" style="padding: 4rem 0;">
   <div class="booking-section">
     <div class="section-label" style="justify-content:center;">Ready to start</div>
+    <!-- EDIT: Booking section headline -->
     <h2>Book your<br>discovery call</h2>
-    <p>Pick a time that works for you. All sessions are online via Google Meet — evenings and weekends available.</p>
-    <!-- Replace the href below with your Calendly link once set up -->
-    <a href="https://calendly.com/YOUR-LINK-HERE" target="_blank" class="btn-primary" style="font-size:15px; padding: 1rem 2.5rem;">View available times →</a>
+    <!-- EDIT: Booking section subtext -->
+    <p>Pick a time that works for you. All sessions are online via Google Meet, with evenings and weekends available.</p>
+
+    <!-- Calendly link: update the URL below if you ever change your Calendly event -->
+    <a href="https://calendly.com/reset-coaching26/30min" target="_blank" class="btn-primary" style="font-size:15px; padding: 1rem 2.5rem;">View available times →</a>
     <p class="calendly-note">Powered by Calendly · Google Meet link sent automatically on booking</p>
+
+    <!-- Inline Calendly widget: lets visitors pick a slot without leaving the page -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/reset-coaching26/30min?background_color=111111&text_color=f0f0f0&primary_color=00e5a0&hide_gdpr_banner=1" style="min-width:280px; height:700px; margin-top:2.5rem;"></div>
+  </div>
+</section>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<div class="divider"></div>
+
+<section id="contact" style="padding: 4rem 2.5rem;">
+  <div class="booking-section">
+    <div class="section-label" style="justify-content:center;">Get in touch</div>
+    <!-- EDIT: Contact section headline -->
+    <h2>Prefer to<br>email first?</h2>
+    <!-- EDIT: Contact section subtext -->
+    <p>Got a question before booking, or want to talk through fit? Drop me a line directly.</p>
+    <!-- EDIT: Contact email address -->
+    <a href="mailto:reset.coaching26@gmail.com" class="btn-primary" style="font-size:15px; padding: 1rem 2.5rem;">reset.coaching26@gmail.com</a>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">RE<span>:</span>SET Coaching</div>
-  <div class="footer-note">ICF Level 1 coach training in progress · Leeds, UK</div>
+  <!-- EDIT: Footer tagline -->
+  <div class="footer-note">Performance Coaching · Leeds, UK</div>
 </footer>
 
 </body>
