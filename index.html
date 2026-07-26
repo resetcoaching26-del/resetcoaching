@@ -24,6 +24,7 @@
   .nav-cta:hover { background: var(--accent2) !important; }
   section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
   .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 8rem; max-width: 100%; padding-left: 2.5rem; padding-right: 2.5rem; position: relative; overflow: hidden; }
+  .hero-content { max-width: 1100px; width: 100%; margin: 0 auto; }
   .hero::before { content: 'RE:SET'; position: absolute; right: -2rem; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(10rem, 22vw, 20rem); color: rgba(255,255,255,0.025); pointer-events: none; user-select: none; white-space: nowrap; }
   .hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero-tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
@@ -66,8 +67,9 @@
   .booking-section { background: var(--surface); border: 0.5px solid var(--border); border-radius: 2px; padding: 4rem; text-align: center; position: relative; overflow: hidden; max-width: 1100px; margin: 0 auto; }
   .booking-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
   .booking-section h2 { margin-bottom: 1rem; }
-  .booking-section p { color: #c0c0c0; font-weight: 300; max-width: 500px; margin: 0 auto 2.5rem; font-size: 1rem; }
-  .calendly-note { font-size: 12px; color: #888; margin-top: 1.5rem; }
+  .booking-section p { color: #c0c0c0; font-weight: 300; max-width: 500px; margin: 0 auto; font-size: 1rem; }
+  .booking-body { display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-top: 1.5rem; }
+  .calendly-note { font-size: 12px; color: #888; }
   .calendly-inline-widget { border-radius: 2px; overflow: hidden; }
   footer { border-top: 0.5px solid var(--border); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
   .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--muted); }
@@ -79,13 +81,48 @@
   .audience-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
   .audience-sub { font-size: 11px; color: #b0b0b0; font-weight: 300; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .hero > * { animation: fadeUp 0.6s ease forwards; opacity: 0; }
-  .hero > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero > *:nth-child(2) { animation-delay: 0.2s; }
-  .hero > *:nth-child(3) { animation-delay: 0.35s; }
-  .hero > *:nth-child(4) { animation-delay: 0.5s; }
+  .hero-content > * { animation: fadeUp 0.6s ease forwards; opacity: 0; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.5s; }
+  .nav-toggle-checkbox { display: none; }
+  .nav-toggle-label { display: none; cursor: pointer; font-size: 1.6rem; line-height: 1; color: var(--text); z-index: 101; }
+
   @media (max-width: 700px) {
     .about-grid { grid-template-columns: 1fr; }
+
+    nav { padding: 1.1rem 1.25rem; }
+    .nav-toggle-label { display: block; }
+    .nav-links {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      background: rgba(10,10,10,0.98);
+      padding: 1.5rem 1.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      transform: translateY(-130%);
+      transition: transform 0.3s ease;
+    }
+    .nav-links a { font-size: 14px; }
+    .nav-toggle-checkbox:checked ~ .nav-links { transform: translateY(0); }
+
+    section { padding: 4rem 1.25rem; }
+    .hero { min-height: auto; padding-left: 1.25rem; padding-right: 1.25rem; padding-top: 6.5rem; padding-bottom: 3.5rem; }
+    .hero h1 { font-size: clamp(2.75rem, 12vw, 4rem); }
+    .hero p { font-size: 1rem; max-width: 100%; }
+
+    .audience-bar { flex-wrap: wrap; overflow-x: visible; gap: 1.25rem; }
+    .audience-item { flex: 0 0 45%; min-width: 0; }
+
+    .booking-section { padding: 2.5rem 1.25rem; }
+    .calendly-inline-widget { width: 100%; }
+
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.25rem; }
   }
 </style>
 </head>
@@ -102,6 +139,8 @@
 
 <nav>
   <div class="nav-logo">RE<span>:</span>SET</div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#coaching">Coaching</a></li>
@@ -110,18 +149,27 @@
     <li><a href="#book" class="nav-cta">Book a call</a></li>
   </ul>
 </nav>
+<script>
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('nav-toggle').checked = false;
+    });
+  });
+</script>
 
 <div class="hero">
-  <!-- EDIT: Hero eyebrow tag (small line above headline) -->
-  <div class="hero-tag">Performance Coaching · Leeds, UK</div>
-  <!-- EDIT: Hero headline (wrap the highlighted word/phrase in <em>) -->
-  <h1>Perform at your<br><em>highest level.</em></h1>
-  <!-- EDIT: Hero subtext -->
-  <p>Coaching for high performers in business and sport, helping you unlock clarity, build resilience, and operate at your peak.</p>
-  <div class="btn-group">
-    <!-- EDIT: Hero button labels -->
-    <a href="#book" class="btn-primary">Book a free discovery call</a>
-    <a href="#coaching" class="btn-outline">How it works</a>
+  <div class="hero-content">
+    <!-- EDIT: Hero eyebrow tag (small line above headline) -->
+    <div class="hero-tag">Mindset & Performance Coaching · Leeds, UK</div>
+    <!-- EDIT: Hero headline (wrap the highlighted word/phrase in <em>) -->
+    <h1>Perform at your<br><em>highest level.</em></h1>
+    <!-- EDIT: Hero subtext -->
+    <p>Coaching for high performers in business and sport, helping you unlock clarity, build resilience, and operate at your peak.</p>
+    <div class="btn-group">
+      <!-- EDIT: Hero button labels -->
+      <a href="#book" class="btn-primary">Book a free discovery call</a>
+      <a href="#coaching" class="btn-outline">How it works</a>
+    </div>
   </div>
 </div>
 
@@ -269,15 +317,17 @@
     <div class="section-label" style="justify-content:center;">Ready to start</div>
     <!-- EDIT: Booking section headline -->
     <h2>Book your<br>discovery call</h2>
-    <!-- EDIT: Booking section subtext -->
-    <p>Pick a time that works for you. All sessions are online via Google Meet, with evenings and weekends available.</p>
+    <div class="booking-body">
+      <!-- EDIT: Booking section subtext -->
+      <p>Pick a time that works for you. All sessions are online via Google Meet, with evenings and weekends available.</p>
 
-    <!-- Calendly link: update the URL below if you ever change your Calendly event -->
-    <a href="https://calendly.com/reset-coaching26/30min" target="_blank" class="btn-primary" style="font-size:15px; padding: 1rem 2.5rem;">View available times →</a>
-    <p class="calendly-note">Powered by Calendly · Google Meet link sent automatically on booking</p>
+      <!-- Calendly link: update the URL below if you ever change your Calendly event -->
+      <a href="https://calendly.com/reset-coaching26/30min" target="_blank" class="btn-primary" style="font-size:15px; padding: 1rem 2.5rem;">View available times →</a>
+      <p class="calendly-note">Powered by Calendly · Google Meet link sent automatically on booking</p>
 
-    <!-- Inline Calendly widget: lets visitors pick a slot without leaving the page -->
-    <div class="calendly-inline-widget" data-url="https://calendly.com/reset-coaching26/30min?background_color=111111&text_color=f0f0f0&primary_color=00e5a0&hide_gdpr_banner=1" style="min-width:280px; height:700px; margin-top:2.5rem;"></div>
+      <!-- Inline Calendly widget: lets visitors pick a slot without leaving the page -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/reset-coaching26/30min?background_color=111111&text_color=f0f0f0&primary_color=00e5a0&hide_gdpr_banner=1" style="min-width:280px; height:700px;"></div>
+    </div>
   </div>
 </section>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -299,7 +349,7 @@
 <footer>
   <div class="footer-logo">RE<span>:</span>SET Coaching</div>
   <!-- EDIT: Footer tagline -->
-  <div class="footer-note">Performance Coaching · Leeds, UK</div>
+  <div class="footer-note">Mindset & Performance Coaching · Leeds, UK</div>
 </footer>
 
 </body>
