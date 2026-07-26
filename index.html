@@ -45,7 +45,7 @@
   .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .stat-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 2px; padding: 1.5rem; position: relative; overflow: hidden; }
   .stat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); }
-  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--accent); letter-spacing: 0.05em; line-height: 1; margin-bottom: 0.25rem; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--accent); letter-spacing: 0.05em; line-height: 1; margin-bottom: 0.25rem; overflow-wrap: break-word; word-break: break-word; }
   .stat-label { font-size: 12px; color: #b0b0b0; text-transform: uppercase; letter-spacing: 0.1em; }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
   .service-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 2px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
@@ -91,6 +91,7 @@
 
   @media (max-width: 700px) {
     .about-grid { grid-template-columns: 1fr; }
+    .stat-num { font-size: 1.9rem; }
 
     nav { padding: 1.1rem 1.25rem; }
     .nav-toggle-label { display: block; }
